@@ -1,6 +1,5 @@
 package com.example.calculatorapp
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -10,8 +9,6 @@ import com.google.android.material.button.MaterialButton
 import java.lang.ArithmeticException
 import kotlin.properties.Delegates
 import android.widget.Toast
-import android.view.GestureDetector
-import android.view.MotionEvent
 
 class BasicCalcActivity : AppCompatActivity() {
 
@@ -21,7 +18,6 @@ class BasicCalcActivity : AppCompatActivity() {
     private var actualOperation : Int = 0
     private var actualSign : Int = 1
 
-    @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.basic)
@@ -66,29 +62,21 @@ class BasicCalcActivity : AppCompatActivity() {
         buttonSign.setOnClickListener { changeSign() }
         buttonClear.setOnClickListener { display.text = "" }
         buttonAllClear.setOnClickListener { clearAll() }
-
-        val doubleACTapDetector = GestureDetector(this, object : GestureDetector.SimpleOnGestureListener() {
-            override fun onDoubleTap(e: MotionEvent): Boolean {
-                clearAll()
-                return super.onDoubleTap(e)
-            }
-        })
-        buttonClear.setOnTouchListener { _, event ->
-            doubleACTapDetector.onTouchEvent(event)
-        }
     }
 
     private fun appendToDisplay(value: String) {
         val currentDisplayText = display.text.toString()
+        if(value == ".") {
+            if(currentDisplayText.contains(".")) return
+        }
         val newDisplayText = currentDisplayText + value
         display.text = newDisplayText
     }
 
+
     private fun setOperation(operation: Int) {
         val currentDisplayText = display.text.toString()
-        if(currentDisplayText != ""){
-            firstNumber = currentDisplayText.toDouble()
-        }
+        firstNumber = currentDisplayText.toDouble()
         actualOperation = operation
         display.text = ""
     }
@@ -112,7 +100,12 @@ class BasicCalcActivity : AppCompatActivity() {
                 }
             }
         }
-        display.text = result.toString()
+        if(result.rem(1.0) == 0.0){
+            display.text = result.toInt().toString()
+        }
+        else{
+            display.text = result.toString()
+        }
     }
 
     private fun changeSign() {
