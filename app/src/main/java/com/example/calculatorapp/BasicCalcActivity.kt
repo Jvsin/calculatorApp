@@ -17,6 +17,7 @@ class BasicCalcActivity : AppCompatActivity() {
     private var secondNumber by Delegates.notNull<Double>()
     private var actualOperation : Int = 0
     private var actualSign : Int = 1
+    private var clearFlag : Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,7 +61,7 @@ class BasicCalcActivity : AppCompatActivity() {
         buttonDivide.setOnClickListener { setOperation(4) }
         buttonResult.setOnClickListener { countResult() }
         buttonSign.setOnClickListener { changeSign() }
-        buttonClear.setOnClickListener { display.text = "" }
+        buttonClear.setOnClickListener { clear() }
         buttonAllClear.setOnClickListener { clearAll() }
     }
 
@@ -89,9 +90,17 @@ class BasicCalcActivity : AppCompatActivity() {
         actualSign = 1
         var result: Double = 0.0
         val currentDisplayText = display.text.toString()
-        secondNumber = currentDisplayText.toDouble()
+        if(currentDisplayText.isNotEmpty()){
+            secondNumber = currentDisplayText.toDouble()
+        }
         when(actualOperation){
-            0 -> result = currentDisplayText.toDouble()
+            0 -> {
+                result = if(currentDisplayText.isNotEmpty()){
+                    currentDisplayText.toDouble()
+                } else {
+                    0.0
+                }
+            }
             1 -> result = firstNumber + secondNumber
             2 -> result = firstNumber - secondNumber
             3 -> result = firstNumber * secondNumber
@@ -136,5 +145,15 @@ class BasicCalcActivity : AppCompatActivity() {
         actualSign = 1
         actualOperation = 0
         display.text = ""
+    }
+
+    private fun clear() {
+        if(clearFlag) {
+            clearAll()
+            clearFlag = false
+            return
+        }
+        display.text = ""
+        clearFlag = true
     }
 }
