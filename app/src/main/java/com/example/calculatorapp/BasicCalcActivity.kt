@@ -65,6 +65,10 @@ class BasicCalcActivity : AppCompatActivity() {
     }
 
     private fun appendToDisplay(value: String) {
+        if(actualOperation == 5) {
+            display.text = ""
+            actualOperation = 0
+        }
         val currentDisplayText = display.text.toString()
         if(value == ".") {
             if(currentDisplayText.contains(".")) return
@@ -87,6 +91,7 @@ class BasicCalcActivity : AppCompatActivity() {
         val currentDisplayText = display.text.toString()
         secondNumber = currentDisplayText.toDouble()
         when(actualOperation){
+            0 -> result = currentDisplayText.toDouble()
             1 -> result = firstNumber + secondNumber
             2 -> result = firstNumber - secondNumber
             3 -> result = firstNumber * secondNumber
@@ -95,11 +100,14 @@ class BasicCalcActivity : AppCompatActivity() {
                     result = firstNumber / secondNumber
                 }
                 catch (e: ArithmeticException){
+                    //TODO: POPRAWIĆ BO NIE DZIAŁA
                     Toast.makeText(this, "Nie można dzielić przez zero!",
                         Toast.LENGTH_SHORT).show()
                 }
             }
+            5 -> result = currentDisplayText.toDouble()
         }
+        actualOperation = 5
         if(result.rem(1.0) == 0.0){
             display.text = result.toInt().toString()
         }
