@@ -1,7 +1,6 @@
 package com.example.calculatorapp
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
@@ -62,12 +61,11 @@ class BasicCalcActivity : AppCompatActivity() {
         buttonDivide.setOnClickListener { setOperation(4) }
         buttonResult.setOnClickListener { countResult() }
         buttonSign.setOnClickListener { changeSign() }
-        buttonClear.setOnClickListener { clear() }
+        buttonClear.setOnClickListener { display.text = "" }
         buttonAllClear.setOnClickListener { clearAll() }
     }
 
     private fun appendToDisplay(value: String) {
-        checkClear()
         if(actualOperation == 5) {
             display.text = ""
             actualOperation = 0
@@ -115,7 +113,6 @@ class BasicCalcActivity : AppCompatActivity() {
     }
 
     private fun countResult() {
-        checkClear()
         actualSign = 1
         var result: Double = 0.0
         val currentDisplayText = display.text.toString()
