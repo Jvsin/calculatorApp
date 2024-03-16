@@ -61,7 +61,7 @@ class BasicCalcActivity : AppCompatActivity() {
         buttonDivide.setOnClickListener { setOperation(4) }
         buttonResult.setOnClickListener { countResult() }
         buttonSign.setOnClickListener { changeSign() }
-        buttonClear.setOnClickListener { display.text = "" }
+        buttonClear.setOnClickListener { clear() }
         buttonAllClear.setOnClickListener { clearAll() }
     }
 
@@ -84,7 +84,9 @@ class BasicCalcActivity : AppCompatActivity() {
         checkClear()
         val currentDisplayText = display.text.toString()
         if(actualOperation != 0){
-            multiCountingResult(currentDisplayText)
+            if(currentDisplayText.isNotEmpty()){
+                multiCountingResult(currentDisplayText)
+            }
         }
         else {
             if(currentDisplayText.isNotEmpty()) {
