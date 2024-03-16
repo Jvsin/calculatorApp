@@ -70,6 +70,7 @@ class BasicCalcActivity : AppCompatActivity() {
             display.text = ""
             actualOperation = 0
         }
+
         val currentDisplayText = display.text.toString()
         if(value == ".") {
             if(currentDisplayText.contains(".")) return
