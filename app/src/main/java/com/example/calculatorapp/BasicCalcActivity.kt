@@ -1,6 +1,7 @@
 package com.example.calculatorapp
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
@@ -17,6 +18,7 @@ class BasicCalcActivity : AppCompatActivity() {
     private var secondNumber by Delegates.notNull<Double>()
     private var actualOperation : Int = 0
     private var actualSign : Int = 1
+    private var clearFlag : Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,11 +62,16 @@ class BasicCalcActivity : AppCompatActivity() {
         buttonDivide.setOnClickListener { setOperation(4) }
         buttonResult.setOnClickListener { countResult() }
         buttonSign.setOnClickListener { changeSign() }
-        buttonClear.setOnClickListener { display.text = "" }
+        buttonClear.setOnClickListener { clear() }
         buttonAllClear.setOnClickListener { clearAll() }
     }
 
     private fun appendToDisplay(value: String) {
+        checkClear()
+        if(actualOperation == 5) {
+            display.text = ""
+            actualOperation = 0
+        }
         val currentDisplayText = display.text.toString()
         if(value == ".") {
             if(currentDisplayText.contains(".")) return
@@ -75,18 +82,54 @@ class BasicCalcActivity : AppCompatActivity() {
 
 
     private fun setOperation(operation: Int) {
+        checkClear()
         val currentDisplayText = display.text.toString()
-        firstNumber = currentDisplayText.toDouble()
+        if(actualOperation != 0){
+            multiCountingResult(currentDisplayText)
+        }
+        else {
+            if(currentDisplayText.isNotEmpty()) {
+                firstNumber = currentDisplayText.toDouble()
+            }
+        }
         actualOperation = operation
         display.text = ""
     }
 
+    private fun multiCountingResult(numb: String){
+        when(actualOperation){
+            1 -> firstNumber += numb.toDouble()
+            2 -> firstNumber -= numb.toDouble()
+            3 -> firstNumber *= numb.toDouble()
+            4 -> {
+                try {
+                    firstNumber /= numb.toDouble()
+                }
+                catch (e: ArithmeticException){
+                    //TODO: POPRAWIĆ BO NIE DZIAŁA
+                    Toast.makeText(this, "Nie można dzielić przez zero!",
+                        Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
+
     private fun countResult() {
+        checkClear()
         actualSign = 1
         var result: Double = 0.0
         val currentDisplayText = display.text.toString()
-        secondNumber = currentDisplayText.toDouble()
+        if(currentDisplayText.isNotEmpty()){
+            secondNumber = currentDisplayText.toDouble()
+        }
         when(actualOperation){
+            0 -> {
+                result = if(currentDisplayText.isNotEmpty()){
+                    currentDisplayText.toDouble()
+                } else {
+                    0.0
+                }
+            }
             1 -> result = firstNumber + secondNumber
             2 -> result = firstNumber - secondNumber
             3 -> result = firstNumber * secondNumber
@@ -95,11 +138,18 @@ class BasicCalcActivity : AppCompatActivity() {
                     result = firstNumber / secondNumber
                 }
                 catch (e: ArithmeticException){
+                    //TODO: POPRAWIĆ BO NIE DZIAŁA
                     Toast.makeText(this, "Nie można dzielić przez zero!",
                         Toast.LENGTH_SHORT).show()
                 }
             }
+//            5 -> result = currentDisplayText.toDouble()
         }
+
+        actualSign = if(result < 0) -1
+        else 1
+
+        actualOperation = 0
         if(result.rem(1.0) == 0.0){
             display.text = result.toInt().toString()
         }
@@ -109,6 +159,7 @@ class BasicCalcActivity : AppCompatActivity() {
     }
 
     private fun changeSign() {
+        checkClear()
         val currentDisplayText = display.text.toString()
         var newDisplayText = ""
         if(actualSign == 1) {
@@ -128,5 +179,19 @@ class BasicCalcActivity : AppCompatActivity() {
         actualSign = 1
         actualOperation = 0
         display.text = ""
+    }
+
+    private fun clear() {
+        if(clearFlag) {
+            clearAll()
+            clearFlag = false
+            return
+        }
+        display.text = ""
+        clearFlag = true
+    }
+
+    private fun checkClear(){
+        if(clearFlag) clearFlag = false
     }
 }
