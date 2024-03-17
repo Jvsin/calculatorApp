@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="Result"
+            android:text=""
             android:textSize="50sp"
             android:textStyle="bold" />
 
@@ -51,7 +51,7 @@
 
             <Button
                 android:id="@+id/allClearButton"
-                android:backgroundTint="@color/cyan"
+                android:backgroundTint="@color/orange"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -335,7 +335,7 @@
                 android:text="0" />
 
             <Button
-                android:id="@+id/buttonResult"
+                android:id="@+id/buttonEqual"
                 android:backgroundTint="@color/orange"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
