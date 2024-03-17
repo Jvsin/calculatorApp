@@ -90,6 +90,9 @@ class AdvancedCalcActivity : AppCompatActivity() {
         }
 
         val currentDisplayText = display.text.toString()
+        if(currentDisplayText.length > 12) {
+            return
+        }
         if(value == ".") {
             if(currentDisplayText.contains(".")) return
         }
@@ -159,7 +162,15 @@ class AdvancedCalcActivity : AppCompatActivity() {
                 }
             }
         }
-        display.text = result.toString()
+        if(result.rem(1.0) == 0.0){
+            display.text = result.toInt().toString()
+        }
+        else{
+            if(result.toString().length > 12){
+                result = "%.11f".format(result).toDouble()
+            }
+            display.text = result.toString()
+        }
     }
 
     private fun multiCountingResult(numb: String){
@@ -168,16 +179,13 @@ class AdvancedCalcActivity : AppCompatActivity() {
             2 -> firstNumber -= numb.toDouble()
             3 -> firstNumber *= numb.toDouble()
             4 -> {
-                try {
-                    Log.v("dzielenie","wlazlem")
-                    firstNumber /= numb.toDouble()
-                }
-                catch (e: ArithmeticException){
-                    //TODO: POPRAWIĆ BO NIE DZIAŁA
-                    Log.v("dzielenie","wlazlem w e")
-                    Toast.makeText(this, "Nie można dzielić przez zero!",
+                if(secondNumber == 0.0){
+                    display.text = ""
+                    Toast.makeText(applicationContext, "Nie można dzielić przez zero!",
                         Toast.LENGTH_SHORT).show()
+                    return
                 }
+                firstNumber /= numb.toDouble()
             }
         }
     }
@@ -219,6 +227,9 @@ class AdvancedCalcActivity : AppCompatActivity() {
             display.text = result.toInt().toString()
         }
         else{
+            if(result.toString().length > 12){
+                result = "%.11f".format(result).toDouble()
+            }
             display.text = result.toString()
         }
     }

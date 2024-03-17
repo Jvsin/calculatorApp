@@ -73,6 +73,9 @@ class BasicCalcActivity : AppCompatActivity() {
         }
 
         val currentDisplayText = display.text.toString()
+        if(currentDisplayText.length > 12) {
+            return
+        }
         if(value == ".") {
             if(currentDisplayText.contains(".")) return
         }
@@ -152,6 +155,9 @@ class BasicCalcActivity : AppCompatActivity() {
             display.text = result.toInt().toString()
         }
         else{
+            if(result.toString().length > 12){
+                result = "%.11f".format(result).toDouble()
+            }
             display.text = result.toString()
         }
     }
