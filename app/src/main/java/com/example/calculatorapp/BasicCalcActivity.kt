@@ -1,6 +1,7 @@
 package com.example.calculatorapp
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
@@ -103,14 +104,13 @@ class BasicCalcActivity : AppCompatActivity() {
             2 -> firstNumber -= numb.toDouble()
             3 -> firstNumber *= numb.toDouble()
             4 -> {
-                try {
-                    firstNumber /= numb.toDouble()
-                }
-                catch (e: ArithmeticException){
-                    //TODO: POPRAWIĆ BO NIE DZIAŁA
-                    Toast.makeText(this, "Nie można dzielić przez zero!",
+                if(numb.toDouble() == 0.0){
+                    display.text = ""
+                    Toast.makeText(applicationContext, "Nie można dzielić przez zero!",
                         Toast.LENGTH_SHORT).show()
+                    return
                 }
+                firstNumber /= numb.toDouble()
             }
         }
     }
@@ -134,16 +134,14 @@ class BasicCalcActivity : AppCompatActivity() {
             2 -> result = firstNumber - secondNumber
             3 -> result = firstNumber * secondNumber
             4 -> {
-                try {
-                    result = firstNumber / secondNumber
-                }
-                catch (e: ArithmeticException){
-                    //TODO: POPRAWIĆ BO NIE DZIAŁA
-                    Toast.makeText(this, "Nie można dzielić przez zero!",
+                if(secondNumber == 0.0){
+                    display.text = ""
+                    Toast.makeText(applicationContext, "Nie można dzielić przez zero!",
                         Toast.LENGTH_SHORT).show()
+                    return
                 }
+                result = firstNumber / secondNumber
             }
-//            5 -> result = currentDisplayText.toDouble()
         }
 
         actualSign = if(result < 0) -1
