@@ -72,10 +72,10 @@ class AdvancedCalcActivity : AppCompatActivity() {
         buttonCosinus.setOnClickListener { convertTo(3) }
         buttonTangens.setOnClickListener { convertTo(4) }
         buttonPow2.setOnClickListener { convertTo(5) }
-        buttonPowY.setOnClickListener { convertTo(6) }
-        buttonLn.setOnClickListener { convertTo(7) }
-        buttonLog.setOnClickListener { convertTo(8) }
-        buttonSqrt.setOnClickListener { convertTo(9) }
+        buttonPowY.setOnClickListener { setOperation(5) }
+        buttonLn.setOnClickListener { convertTo(6) }
+        buttonLog.setOnClickListener { convertTo(7) }
+        buttonSqrt.setOnClickListener { convertTo(8) }
 
         buttonResult.setOnClickListener { countResult() }
         buttonSign.setOnClickListener { changeSign() }
@@ -84,10 +84,7 @@ class AdvancedCalcActivity : AppCompatActivity() {
     }
 
     private fun appendToDisplay(value: String) {
-        if(actualOperation == 5) {
-            display.text = ""
-            actualOperation = 0
-        }
+        checkClear()
 
         val currentDisplayText = display.text.toString()
         if(currentDisplayText.length > 12) {
@@ -119,6 +116,7 @@ class AdvancedCalcActivity : AppCompatActivity() {
     }
 
     private fun convertTo(operation: Int){
+        checkClear()
         val currentDisplayText = display.text.toString()
         var result: Double = 0.0
         if(currentDisplayText.isNotEmpty()){
@@ -131,9 +129,6 @@ class AdvancedCalcActivity : AppCompatActivity() {
                 4 -> result = tan(num)
                 5 -> result = num.pow(2)
                 6 -> {
-                    //TODO:pieriwastek
-                }
-                7 -> {
                     if(num < 0.0){
                         display.text = ""
                         Toast.makeText(applicationContext, "Błędne dane",
@@ -142,7 +137,7 @@ class AdvancedCalcActivity : AppCompatActivity() {
                     }
                     result = ln(num)
                 }
-                8 -> {
+                7 -> {
                     if(num < 0.0){
                         display.text = ""
                         Toast.makeText(applicationContext, "Błędne dane",
@@ -151,7 +146,7 @@ class AdvancedCalcActivity : AppCompatActivity() {
                     }
                     result = log(10.0, num)
                 }
-                9 -> {
+                8 -> {
                     if(num < 0.0){
                         display.text = ""
                         Toast.makeText(applicationContext, "Błędne dane",
@@ -187,10 +182,12 @@ class AdvancedCalcActivity : AppCompatActivity() {
                 }
                 firstNumber /= numb.toDouble()
             }
+            5 -> firstNumber.pow(numb.toDouble())
         }
     }
 
     private fun countResult() {
+        checkClear()
         actualSign = 1
         var result: Double = 0.0
         val currentDisplayText = display.text.toString()
@@ -217,6 +214,7 @@ class AdvancedCalcActivity : AppCompatActivity() {
                 }
                 result = firstNumber / secondNumber
             }
+            5 -> result = firstNumber.pow(secondNumber)
         }
 
         actualSign = if(result < 0) -1
@@ -237,16 +235,18 @@ class AdvancedCalcActivity : AppCompatActivity() {
     private fun changeSign() {
         checkClear()
         val currentDisplayText = display.text.toString()
-        var newDisplayText = ""
-        if(actualSign == 1) {
-            newDisplayText = "-$currentDisplayText"
-            actualSign = -1
+        if(currentDisplayText.isNotEmpty()){
+            var newDisplayText = ""
+            if(actualSign == 1) {
+                newDisplayText = "-$currentDisplayText"
+                actualSign = -1
+            }
+            else {
+                newDisplayText = currentDisplayText.drop(1)
+                actualSign = 1
+            }
+            display.text = newDisplayText
         }
-        else {
-            newDisplayText = currentDisplayText.drop(1)
-            actualSign = 1
-        }
-        display.text = newDisplayText
     }
 
     private fun clearAll() {
