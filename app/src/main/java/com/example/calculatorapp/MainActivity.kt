@@ -20,5 +20,14 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, AdvancedCalcActivity::class.java)
             startActivity(intent)
         }
+        val aboutButton = findViewById<Button>(R.id.buttonAbout)
+        aboutButton.setOnClickListener {
+            val intent = Intent(this, AboutMe::class.java)
+            startActivity(intent)
+        }
+        val exitButton = findViewById<Button>(R.id.buttonExit)
+        exitButton.setOnClickListener {
+            finishAffinity()
+        }
     }
 }

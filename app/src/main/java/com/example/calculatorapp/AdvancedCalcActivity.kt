@@ -121,7 +121,6 @@ class AdvancedCalcActivity : AppCompatActivity() {
         var result: Double = 0.0
         if(currentDisplayText.isNotEmpty()){
             var num = currentDisplayText.toDouble()
-
             when(operation){
                 1 -> result = num * 0.01
                 2 -> result = sin(num)

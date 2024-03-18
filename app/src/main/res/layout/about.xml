@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="16dp"
+    android:background="@color/gray"
+    android:orientation="vertical"
+    tools:context=".AboutMe">
+
+    <TextView
+        android:id="@+id/author_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/autor"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:id="@+id/author_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/przedmiot"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:layout_marginTop="4dp" />
+
+    <TextView
+        android:id="@+id/project_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/opis"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:layout_marginTop="4dp" />
+    <Button
+        android:id="@+id/close_button"
+        android:backgroundTint="@color/red"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/powrot"
+        android:layout_marginTop="16dp" />
+
+</LinearLayout>

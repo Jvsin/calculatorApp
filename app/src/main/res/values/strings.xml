@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">calculatorApp</string>
+    <string name="autor">Autor: Piotr Jasiński</string>
+    <string name="przedmiot">Przedmiot: Technologie Mobilne 2023/2024 sem. letni</string>
+    <string name="opis">Projekt aplikacji mobilnej kalkulatora podstawowego oraz zaawansowanego.</string>
+    <string name="powrot">Wróć</string>
 </resources>
