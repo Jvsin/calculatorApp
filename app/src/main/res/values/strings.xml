@@ -4,4 +4,32 @@
     <string name="przedmiot">Przedmiot: Technologie Mobilne 2023/2024 sem. letni</string>
     <string name="opis">Projekt aplikacji mobilnej kalkulatora podstawowego oraz zaawansowanego.</string>
     <string name="powrot">Wróć</string>
+    <string name="clear">C / CE</string>
+    <string name="AllClear">AC</string>
+    <string name="Sign">+/-</string>
+    <string name="Percent">%</string>
+    <string name="Sinus">sin(x)</string>
+    <string name="Cosinus">cos(x)</string>
+    <string name="Tangens">tan(x)</string>
+    <string name="Power2">x^2</string>
+    <string name="NaturalLog">ln(x)</string>
+    <string name="DecimalLog">log(x)</string>
+    <string name="Square">sqrt(x)</string>
+    <string name="PowerY">x^y</string>
+    <string name="Seven">7</string>
+    <string name="Eight">8</string>
+    <string name="Nine">9</string>
+    <string name="Plus">+</string>
+    <string name="Four">4</string>
+    <string name="Five">5</string>
+    <string name="Six">6</string>
+    <string name="Minus">-</string>
+    <string name="One">1</string>
+    <string name="Two">2</string>
+    <string name="Three">3</string>
+    <string name="Multiply">X</string>
+    <string name="Coma">,</string>
+    <string name="Zero">0</string>
+    <string name="Equal">=</string>
+    <string name="Divide">/</string>
 </resources>

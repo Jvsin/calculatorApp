@@ -49,7 +49,7 @@
                 android:autoSizeMaxTextSize="20sp"
                 android:layout_weight="1"
                 android:layout_gravity="center_horizontal|center"
-                android:text="C / CE" />
+                android:text="@string/clear" />
 
             <Button
                 android:id="@+id/allClearButton"
@@ -60,7 +60,7 @@
                 android:autoSizeMaxTextSize="20sp"
                 android:layout_weight="1"
                 android:layout_gravity="center_horizontal|center"
-                android:text="AC" />
+                android:text="@string/AllClear" />
 
             <Button
                 android:id="@+id/changeSignButton"
@@ -71,7 +71,7 @@
                 android:autoSizeTextType="uniform"
                 android:autoSizeMaxTextSize="20sp"
                 android:accessibilityHeading="false"
-                android:text="+/-"
+                android:text="@string/Sign"
                 android:layout_gravity="center_horizontal|center"
                 android:visibility="visible" />
 
@@ -84,7 +84,7 @@
                 android:autoSizeTextType="uniform"
                 android:autoSizeMaxTextSize="20sp"
                 android:layout_gravity="center_horizontal|center"
-                android:text="%" />
+                android:text="@string/Percent" />
         </LinearLayout>
 
         <LinearLayout
@@ -105,7 +105,7 @@
                 android:autoSizeTextType="uniform"
                 android:autoSizeMaxTextSize="15sp"
                 android:layout_gravity="center_horizontal|center"
-                android:text="sin(x)" />
+                android:text="@string/Sinus" />
 
             <Button
                 android:id="@+id/buttonCosinus"
@@ -116,7 +116,7 @@
                 android:autoSizeTextType="uniform"
                 android:autoSizeMaxTextSize="15sp"
                 android:layout_gravity="center_horizontal|center"
-                android:text="cos(x)" />
+                android:text="@string/Cosinus" />
 
             <Button
                 android:id="@+id/buttonTangens"
@@ -127,7 +127,7 @@
                 android:autoSizeMaxTextSize="15sp"
                 android:layout_gravity="center_horizontal|center"
                 android:layout_weight="1"
-                android:text="tan(x)" />
+                android:text="@string/Tangens" />
 
             <Button
                 android:id="@+id/buttonPow2"
@@ -138,7 +138,7 @@
                 android:autoSizeMaxTextSize="18sp"
                 android:layout_gravity="center_horizontal|center"
                 android:layout_weight="1"
-                android:text="x^2" />
+                android:text="@string/Power2" />
         </LinearLayout>
 
         <LinearLayout
@@ -159,7 +159,7 @@
                 android:autoSizeMaxTextSize="15sp"
                 android:layout_weight="1"
                 android:layout_gravity="center_horizontal|center"
-                android:text="ln(x)" />
+                android:text="@string/NaturalLog" />
 
             <Button
                 android:id="@+id/buttonLog"
@@ -170,7 +170,7 @@
                 android:autoSizeTextType="uniform"
                 android:autoSizeMaxTextSize="15sp"
                 android:layout_gravity="center_horizontal|center"
-                android:text="log(x)" />
+                android:text="@string/DecimalLog" />
 
             <Button
                 android:id="@+id/buttonSqrt"
@@ -181,7 +181,7 @@
                 android:autoSizeMaxTextSize="15sp"
                 android:layout_gravity="center_horizontal|center"
                 android:layout_weight="1"
-                android:text="sqrt(x)" />
+                android:text="@string/Square" />
 
             <Button
                 android:id="@+id/buttonPowY"
@@ -192,7 +192,7 @@
                 android:autoSizeMaxTextSize="18sp"
                 android:layout_gravity="center_horizontal|center"
                 android:layout_weight="1"
-                android:text="x^y" />
+                android:text="@string/PowerY" />
         </LinearLayout>
 
         <LinearLayout
@@ -213,7 +213,7 @@
                 android:autoSizeTextType="uniform"
                 android:autoSizeMaxTextSize="20sp"
                 android:layout_gravity="center_horizontal|center"
-                android:text="7" />
+                android:text="@string/Seven" />
 
             <Button
                 android:id="@+id/button8"
@@ -224,7 +224,7 @@
                 android:autoSizeTextType="uniform"
                 android:autoSizeMaxTextSize="20sp"
                 android:layout_gravity="center_horizontal|center"
-                android:text="8" />
+                android:text="@string/Eight" />
 
             <Button
                 android:id="@+id/button9"
@@ -235,7 +235,7 @@
                 android:autoSizeTextType="uniform"
                 android:autoSizeMaxTextSize="20sp"
                 android:layout_weight="1"
-                android:text="9" />
+                android:text="@string/Nine" />
 
             <Button
                 android:id="@+id/buttonPlus"
@@ -246,7 +246,7 @@
                 android:autoSizeMaxTextSize="20sp"
                 android:layout_gravity="center_horizontal|center"
                 android:layout_weight="1"
-                android:text="+" />
+                android:text="@string/Plus" />
         </LinearLayout>
 
         <LinearLayout
@@ -266,7 +266,7 @@
                 android:autoSizeMaxTextSize="20sp"
                 android:layout_gravity="center_horizontal|center"
                 android:layout_weight="1"
-                android:text="4" />
+                android:text="@string/Four" />
 
             <Button
                 android:id="@+id/button5"
@@ -277,7 +277,7 @@
                 android:autoSizeMaxTextSize="20sp"
                 android:layout_gravity="center_horizontal|center"
                 android:layout_weight="1"
-                android:text="5" />
+                android:text="@string/Five" />
 
             <Button
                 android:id="@+id/button6"
@@ -288,7 +288,7 @@
                 android:autoSizeMaxTextSize="20sp"
                 android:layout_gravity="center_horizontal|center"
                 android:layout_weight="1"
-                android:text="6" />
+                android:text="@string/Six" />
 
             <Button
                 android:id="@+id/buttonMinus"
@@ -299,7 +299,7 @@
                 android:autoSizeMaxTextSize="20sp"
                 android:layout_gravity="center_horizontal|center"
                 android:layout_weight="1"
-                android:text="-" />
+                android:text="@string/Minus" />
         </LinearLayout>
 
         <LinearLayout
@@ -319,7 +319,7 @@
                 android:autoSizeMaxTextSize="20sp"
                 android:layout_gravity="center_horizontal|center"
                 android:layout_weight="1"
-                android:text="1" />
+                android:text="@string/One" />
 
             <Button
                 android:id="@+id/button2"
@@ -330,7 +330,7 @@
                 android:autoSizeMaxTextSize="20sp"
                 android:layout_gravity="center_horizontal|center"
                 android:layout_weight="1"
-                android:text="2" />
+                android:text="@string/Two" />
 
             <Button
                 android:id="@+id/button3"
@@ -341,7 +341,7 @@
                 android:autoSizeMaxTextSize="20sp"
                 android:layout_gravity="center_horizontal|center"
                 android:layout_weight="1"
-                android:text="3" />
+                android:text="@string/Three" />
 
             <Button
                 android:id="@+id/buttonMultiply"
@@ -352,7 +352,7 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal|center"
                 android:layout_weight="1"
-                android:text="X" />
+                android:text="@string/Multiply" />
 
         </LinearLayout>
 
@@ -373,7 +373,7 @@
                 android:autoSizeMaxTextSize="20sp"
                 android:layout_gravity="center_horizontal|center"
                 android:layout_weight="1"
-                android:text="," />
+                android:text="@string/Coma" />
 
             <Button
                 android:id="@+id/button0"
@@ -384,7 +384,7 @@
                 android:autoSizeMaxTextSize="20sp"
                 android:layout_gravity="center_horizontal|center"
                 android:layout_weight="1"
-                android:text="0" />
+                android:text="@string/Zero" />
 
             <Button
                 android:id="@+id/buttonEqual"
@@ -395,7 +395,7 @@
                 android:autoSizeMaxTextSize="20sp"
                 android:layout_gravity="center_horizontal|center"
                 android:layout_weight="1"
-                android:text="=" />
+                android:text="@string/Equal" />
 
 
 
@@ -408,7 +408,7 @@
                 android:autoSizeMaxTextSize="20sp"
                 android:layout_gravity="center_horizontal|center"
                 android:layout_weight="1"
-                android:text="/" />
+                android:text="@string/Divide" />
 
         </LinearLayout>
 
