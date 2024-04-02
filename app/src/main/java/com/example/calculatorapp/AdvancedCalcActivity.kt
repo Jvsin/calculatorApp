@@ -14,7 +14,9 @@ class AdvancedCalcActivity : AppCompatActivity() {
     private lateinit var display: TextView
     private var firstNumber by Delegates.notNull<Double>()
     private var secondNumber by Delegates.notNull<Double>()
+    private var multiCountNumber by Delegates.notNull<Double>()
     private var actualOperation : Int = 0
+    private var lastOperation: Int = 0
     private var actualSign : Int = 1
     private var clearFlag : Boolean = false
 
@@ -195,11 +197,21 @@ class AdvancedCalcActivity : AppCompatActivity() {
         }
         when(actualOperation){
             0 -> {
-                result = if(currentDisplayText.isNotEmpty()){
-                    currentDisplayText.toDouble()
+                if(currentDisplayText.isNotEmpty()){
+                    when(lastOperation){
+                        1 -> result = secondNumber + multiCountNumber
+                        2 -> result = secondNumber - multiCountNumber
+                        3 -> result = secondNumber * multiCountNumber
+                        5 -> result = secondNumber.pow(multiCountNumber)
+                    }
                 } else {
-                    0.0
+                    result = 0.0
                 }
+//                result = if(currentDisplayText.isNotEmpty()){
+//                    currentDisplayText.toDouble()
+//                } else {
+//                    0.0
+//                }
             }
             1 -> result = firstNumber + secondNumber
             2 -> result = firstNumber - secondNumber
@@ -219,7 +231,12 @@ class AdvancedCalcActivity : AppCompatActivity() {
         actualSign = if(result < 0) -1
         else 1
 
+        if(actualOperation != 0){
+            lastOperation = actualOperation
+            multiCountNumber = secondNumber
+        }
         actualOperation = 0
+
         if(result.rem(1.0) == 0.0){
             display.text = result.toInt().toString()
         }
