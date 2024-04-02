@@ -71,7 +71,6 @@ class BasicCalcActivity : AppCompatActivity() {
             display.text = ""
             actualOperation = 0
         }
-
         val currentDisplayText = display.text.toString()
         if(currentDisplayText.length > 12) {
             return

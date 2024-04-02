@@ -23,7 +23,8 @@
             android:text=""
             android:textSize="50sp"
             android:textStyle="bold"
-            android:freezesText="true" />
+            android:freezesText="true"
+            android:textColor="@color/white" />
 
     </LinearLayout>
 
