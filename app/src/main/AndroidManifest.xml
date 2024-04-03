@@ -21,10 +21,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".BasicCalcActivity">
+        <activity android:name=".BasicCalcActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize">
 
         </activity>
-        <activity android:name=".AdvancedCalcActivity">
+        <activity android:name=".AdvancedCalcActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize">
 
         </activity>
 

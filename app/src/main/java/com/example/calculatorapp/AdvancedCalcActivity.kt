@@ -52,7 +52,7 @@ class AdvancedCalcActivity : AppCompatActivity() {
         val buttonLn = findViewById<Button>(R.id.buttonLn)
         val buttonLog = findViewById<Button>(R.id.buttonLog)
         val buttonSqrt = findViewById<Button>(R.id.buttonSqrt)
-        val buttonMenu = findViewById<Button>(R.id.backButton)
+//        val buttonMenu = findViewById<Button>(R.id.backButton)
 
         this.display = findViewById(R.id.resultOnScreen)
         button1.setOnClickListener { appendToDisplay("1")}
@@ -85,7 +85,7 @@ class AdvancedCalcActivity : AppCompatActivity() {
         buttonClear.setOnClickListener { clear() }
         buttonAllClear.setOnClickListener { clearAll() }
 
-        buttonMenu.setOnClickListener { finish() }
+//        buttonMenu.setOnClickListener { finish() }
 
     }
 

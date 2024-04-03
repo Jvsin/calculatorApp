@@ -45,8 +45,8 @@ class BasicCalcActivity : AppCompatActivity() {
         val buttonMinus = findViewById<Button>(R.id.buttonMinus)
         val buttonMultiply = findViewById<Button>(R.id.buttonMultiply)
         val buttonDivide = findViewById<Button>(R.id.buttonDivide)
-        val buttonMenu = findViewById<Button>(R.id.backButton)
-        buttonMenu.setOnClickListener { finish() }
+//        val buttonMenu = findViewById<Button>(R.id.backButton)
+//        buttonMenu.setOnClickListener { finish() }
 
         this.display = findViewById(R.id.resultOnScreen)
         button1.setOnClickListener { appendToDisplay("1")}
@@ -68,7 +68,7 @@ class BasicCalcActivity : AppCompatActivity() {
         buttonSign.setOnClickListener { changeSign() }
         buttonClear.setOnClickListener { clear() }
         buttonAllClear.setOnClickListener { clearAll() }
-        buttonMenu.setOnClickListener { finish() }
+//        buttonMenu.setOnClickListener { finish() }
     }
 
     private fun appendToDisplay(value: String) {
@@ -91,18 +91,21 @@ class BasicCalcActivity : AppCompatActivity() {
     private fun setOperation(operation: Int) {
         checkClear()
         val currentDisplayText = display.text.toString()
-        if(actualOperation != 0){
-            if(currentDisplayText.isNotEmpty()){
-                multiCountingResult(currentDisplayText)
+        if(currentDisplayText.isNotEmpty()){
+            if(actualOperation != 0){
+                if(currentDisplayText.isNotEmpty()){
+                    multiCountingResult(currentDisplayText)
+                }
             }
-        }
-        else {
-            if(currentDisplayText.isNotEmpty()) {
-                firstNumber = currentDisplayText.toDouble()
+            else {
+                if(currentDisplayText.isNotEmpty()) {
+                    firstNumber = currentDisplayText.toDouble()
+                }
             }
+            actualOperation = operation
+            display.text = ""
         }
-        actualOperation = operation
-        display.text = ""
+
     }
 
     private fun multiCountingResult(numb: String){
