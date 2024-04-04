@@ -71,7 +71,7 @@
             <Button
                 android:id="@+id/changeSignButton"
                 android:backgroundTint="@color/orange"
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:autoSizeTextType="uniform"
