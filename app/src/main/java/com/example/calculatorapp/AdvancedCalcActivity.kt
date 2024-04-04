@@ -106,6 +106,7 @@ class AdvancedCalcActivity : AppCompatActivity() {
 
     private fun setOperation(operation: Int) {
         checkClear()
+        actualSign = 1
         val currentDisplayText = display.text.toString()
         if(actualOperation != 0){
             if(currentDisplayText.isNotEmpty()){

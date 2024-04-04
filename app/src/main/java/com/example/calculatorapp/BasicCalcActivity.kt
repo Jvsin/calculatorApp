@@ -90,6 +90,7 @@ class BasicCalcActivity : AppCompatActivity() {
 
     private fun setOperation(operation: Int) {
         checkClear()
+        actualSign = 1
         val currentDisplayText = display.text.toString()
         if(currentDisplayText.isNotEmpty()){
             if(actualOperation != 0){
@@ -143,12 +144,6 @@ class BasicCalcActivity : AppCompatActivity() {
                 } else {
                     result = 0.0
                 }
-
-//                result = if(currentDisplayText.isNotEmpty()){
-//                    currentDisplayText.toDouble()
-//                } else {
-//                    0.0
-//                }
             }
             1 -> result = firstNumber + secondNumber
             2 -> result = firstNumber - secondNumber
